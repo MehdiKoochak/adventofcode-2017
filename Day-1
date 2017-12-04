@@ -1,0 +1,14 @@
+def solver(puzzel):
+    sum = 0
+    puzzel = str(puzzel)
+
+    for i in range(len(puzzel)-1):
+        if puzzel[i] == puzzel[i+1]:
+            sum = sum + int(puzzel[i])
+    if puzzel[0]==puzzel[len(puzzel)-1]:
+        sum = sum + int(puzzel[len(puzzel)-1])
+    print sum
+
+
+input = "1234561" # sample
+solver(input)
