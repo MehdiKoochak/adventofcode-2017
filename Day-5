@@ -1,0 +1,41 @@
+def seprator(input): # detect each line of input
+    puzzel = input.split("\n")
+    return puzzel
+
+def conventor(input): # convert input to integer for easyly working with
+    length = len(input)
+    for i in range(length):
+        input[i] = int(input[i])
+
+    return input;
+
+def solver(input):
+    puzzel = seprator(input)
+    puzzel = conventor(puzzel)
+
+    position = 0
+    length = len(puzzel)
+    counter = 0
+    if puzzel[position] == 0:
+        counter = 1
+        puzzel[0] = 1
+
+    print ("length :" + str(length))
+
+    while position < length:
+        move = puzzel[position]
+        lastvalue = puzzel[position] + 1
+        puzzel[position] = lastvalue
+
+        position = position + move
+        counter = counter + 1
+
+    print ("step :" +str(counter))
+    return;
+
+
+solver("""0
+3
+0
+1
+-3""")
