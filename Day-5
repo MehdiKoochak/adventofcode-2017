@@ -2,7 +2,7 @@ def seprator(input): # detect each line of input
     puzzel = input.split("\n")
     return puzzel
 
-def conventor(input): # convert input to integer for easyly working with
+def conventor(input): # convert input to integer for easily working with
     length = len(input)
     for i in range(length):
         input[i] = int(input[i])
