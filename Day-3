@@ -1,0 +1,44 @@
+def circleFinder(input):  #find our input in which circle located
+    circle = 1
+    circleNumber=0
+    while(input > circle*circle):
+        circle = circle+2
+        circleNumber = circleNumber+1
+
+    return (circle-2)*(circle-2), circleNumber;
+
+def poleFinder(dif, circleNumber): #find input in which pole located
+    pole = 0
+    while dif - circleNumber > 0:
+        pole = pole +1
+        dif = dif - circleNumber
+    return pole;
+
+def entFinder(input):
+    lastNumber ,circleNumber = circleFinder(input)
+    dif = input - lastNumber
+    pole = poleFinder(dif, circleNumber)
+    print ("input :"+str(input))
+    print ("lastNumber: "+ str(lastNumber))
+    print ("circleNumber: "+str(circleNumber))
+    print ("diference: "+str(dif))
+    print ("pole: "+str(pole))
+    print ("line: "+str(lineFinder(pole,circleNumber, lastNumber, input)))
+    return;
+
+def lineFinder(pole, circleNumber,lastNumber, input): # calculate line to 1
+    if (pole == 0) or (pole == 1):
+        line = 1
+    elif (pole == 2) or (pole == 3):
+        line = 3
+    elif (pole == 4) or (pole == 5):
+        line = 5
+    elif (pole == 6) or (pole == 7):
+        line = 7
+    line = ((line * circleNumber) + lastNumber) - input
+    if line < 0 :
+        line = line*(-1)
+    line = line + circleNumber
+    return line;
+
+entFinder(15)
