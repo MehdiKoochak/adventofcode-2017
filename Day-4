@@ -1,0 +1,30 @@
+def linSeprator(input):  # split input by line ("\n")
+    myLine = input.split("\n")
+    return myLine;
+
+def validator(str): # validate each line
+    myArray = str.split()
+    flag = False
+    for cell in range(len(myArray)):
+        temp = myArray[cell]
+        for i in range(cell+1, len(myArray)):
+            if temp == myArray[i]:
+                flag = True
+                continue
+    return flag;
+
+def solver(input):  # sum valid and invalid lines
+    myLine = linSeprator(input)
+    valid, invalid = 0,0
+    for line in myLine:
+        if validator(line) == True:
+            invalid = invalid + 1
+        else:
+            valid = valid +1
+    print ("valid :" + str(valid))
+    print ("invalid :" + str(invalid))
+    return;
+
+solver("""aa bb cc dd ee
+aa bb cc dd aa
+aa bb cc dd aaa""")
