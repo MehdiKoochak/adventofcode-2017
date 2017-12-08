@@ -1,0 +1,65 @@
+def solver(input):
+    puzzel = separator(input)
+    flag = False
+    myPatern = []
+    counter = 0
+    while flag == False:
+        patern = distrubtor(puzzel)
+        patern = str(patern)
+        myPatern.append(patern)
+        flag = paternFinder(myPatern)
+        counter = counter + 1
+        print counter
+
+    print ("counter: "+str(counter))
+    return;
+
+def separator(input):  # separate input by space
+    input = input.split()
+    puzzel = convertor(input)
+    return puzzel;
+
+def convertor(myInt): # convert it to integer
+    length = len(myInt)
+    for cell in range(length):
+        myInt[cell] = int(myInt[cell])
+    return myInt;
+
+def paternFinder(pat): # find our patern
+    length = len(pat)
+    flag = False
+    if length != 1:
+        for i in range(length):
+            temp = pat[i]
+            for j in range(i+1, length):
+                if temp == pat[j]:
+                    flag = True
+    return flag
+
+def distrubtor(myTurn): # distrubt our max 
+    length = len(myTurn)
+    max, iMax = maxFinder(myTurn)
+    position = iMax
+    myTurn[position] = 0
+
+    position = position+1
+    while max > 0:
+        if position == length:
+            position = 0
+        myTurn[position] = myTurn[position] + 1
+        position = position + 1
+        max = max-1
+
+    return myTurn;
+
+def maxFinder(myTurn): # find max and his position
+    max = 0
+    length = len(myTurn)
+    iMax = length
+    for i in range(length):
+        if max < myTurn[i]:
+            max = myTurn[i]
+            iMax = i
+    return max, iMax;
+
+solver("0 2 7 0")
